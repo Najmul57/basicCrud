@@ -14,7 +14,7 @@
 
 <div class="container mt-5">
     <a href="{{ url('/') }}" class="btn btn-success mb-3">Show</a>
-    @if ($errors->any())
+    {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -22,14 +22,24 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
    <form action="{{ url('store') }}" method="post">
        @csrf
 
         <div class="form-group">
-            <input type="text" name="name" class="form-control"  placeholder="Name">
-            <input type="email" name="email" class="form-control"  placeholder="Email">
-            <input type="text" name="phone" class="form-control mb-3"  placeholder="Phone">
+            <input type="text" name="name" class="form-control @error('name') is-invalid  @enderror" value="{{old('name')}}"   placeholder="Name">
+            @error('name')
+                <strong class="text-danger">{{ $message }}</strong>
+            @enderror
+            <input type="email" name="email" class="form-control @error('email') is-invalid  @enderror " value="{{old('email')}}"   placeholder="Email">
+            @error('email')
+                <strong class="text-danger">{{ $message }}</strong>
+            @enderror
+            <input type="text" name="phone" class="form-control @error('phone') is-invalid  @enderror " value="{{old('phone')}}"   placeholder="Phone">
+            @error('phone')
+                <strong class="text-danger">{{ $message }}</strong>
+            @enderror
+            <br>
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
 

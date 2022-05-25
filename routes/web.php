@@ -9,3 +9,6 @@ Route::post('/store',[CrudController::class,'store']);
 Route::get('/edit/{id}',[CrudController::class,'edit']);
 Route::post('/update/{id}',[CrudController::class,'update']);
 Route::get('/delete/{id}',[CrudController::class,'delete']);
+
+Route::get('/restore/{id}',[CrudController::class,'restore']);
+Route::get('/pDelete/{id}',[CrudController::class,'pDelete']);
